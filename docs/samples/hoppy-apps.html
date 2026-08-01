@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample review brief: Hoppy Apps — Shopify App Review Brief</title>
+  <meta name="description" content="Demonstration brief built from public Shopify App Store reviews of Hoppy PopUps and competitor Wheelify: an activation-failure pattern, a review-request timing issue, and one measurable one-week experiment.">
+  <link rel="canonical" href="https://alfredtech2026.github.io/microsaas-1k/samples/hoppy-apps.html">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Sample review brief: Hoppy Apps">
+  <meta property="og:description" content="How public 1-star reviews of a Shopify popup app become one prioritized product/support brief — a demonstration of the Shopify App Review Brief format.">
+  <meta property="og:url" content="https://alfredtech2026.github.io/microsaas-1k/samples/hoppy-apps.html">
+  <meta property="og:site_name" content="Shopify App Review Brief">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sample review brief: Hoppy Apps">
+  <meta name="twitter:description" content="How public 1-star reviews of a Shopify popup app become one prioritized product/support brief.">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site">
+    <a class="brand" href="../">Shopify App Review Brief</a>
+    <nav class="site" aria-label="Site">
+      <a href="../#samples">Sample briefs</a>
+      <a href="../#pilot">Pilot</a>
+      <a href="helixo.html">Helixo sample</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <p><span class="pill">Sample brief</span> <span class="pill">Prepared 2026-08-01</span> <span class="pill">Public data only</span></p>
+    <h1>Sample review brief — Hoppy Apps</h1>
+
+    <div class="notice">
+      <p><strong>Disclaimer:</strong> this brief was prepared from public Shopify App Store reviews as a demonstration of the service format. Hoppy Apps did not commission or endorse it. It is a sample, not an allegation of unresolved defects; reviews are customer reports and should be verified against support tickets and telemetry. Also published as a <a href="https://gist.github.com/alfredtech2026/891ed4dbe39fc9220dd32aadab2805bd">public gist</a>.</p>
+    </div>
+
+    <h2>Executive signal</h2>
+    <p><strong>Highest-priority owned-app risk: access/editor failure in Hoppy PopUps.</strong> Three 1-star reviews in April–May 2026 report that the app would not open, showed a blank screen, or simply did not work. Two reports came from users in their first 10 hours, so this may hit activation before value is reached.</p>
+
+    <h2>Owned app: Hoppy PopUps</h2>
+    <p class="source-link">Public listing: <a href="https://apps.shopify.com/suppr-email-collection-bar">apps.shopify.com/suppr-email-collection-bar</a></p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Prioritized signals — Hoppy PopUps</caption>
+        <thead>
+          <tr><th scope="col">Priority</th><th scope="col">Signal</th><th scope="col">Evidence</th><th scope="col">Suggested next action</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="priority">P0</span></td>
+            <td>App/editor inaccessible</td>
+            <td>May 26: blank screen and inability to edit after prior work; May 7: &ldquo;no me deja entrar a la app&rdquo;; Apr 8: &ldquo;No funciona&rdquo;</td>
+            <td>Segment startup errors by browser/locale/store; reproduce against the affected activation path; add a recoverable error state instead of blank UI.</td>
+          </tr>
+          <tr>
+            <td><span class="priority">P1</span></td>
+            <td>Review-request timing creates mistrust</td>
+            <td>Feb 23 reviewer says the app asked for a review before they could try it</td>
+            <td>Trigger review requests only after a measurable success event, not during initial activation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Pattern:</strong> 4 of 5 one-star reviews shown in the public 1-star filter describe either inability to use the product or frustration before value. The fastest win is activation reliability and instrumentation, not another popup template.</p>
+    <p class="source-link">Source: <a href="https://apps.shopify.com/suppr-email-collection-bar/reviews?ratings%5B%5D=1">Hoppy PopUps 1-star reviews</a></p>
+
+    <h2>Competitor watch: Wheelify Spin Wheel Discount</h2>
+    <p class="source-link">Public listing: <a href="https://apps.shopify.com/spin-wheel">apps.shopify.com/spin-wheel</a></p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Competitor signals — Wheelify</caption>
+        <thead>
+          <tr><th scope="col">Signal</th><th scope="col">Recent evidence</th><th scope="col">Product implication for Hoppy</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pricing surprise</td>
+            <td>May 18 and Feb 20, 2026 reviews complain about usage fees/basic features after setup</td>
+            <td>Keep Hoppy PopUps&rsquo; free-plan boundaries explicit before configuration and show estimated usage before any charge.</td>
+          </tr>
+          <tr>
+            <td>Broken core output</td>
+            <td>Historical reviews report invalid generated discount codes and inaccessible subscriber exports</td>
+            <td>Make &ldquo;verified code at checkout&rdquo; and export reliability visible trust points in onboarding/marketing if telemetry supports the claim.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="source-link">Source: <a href="https://apps.shopify.com/spin-wheel/reviews?ratings%5B%5D=1">Wheelify 1-star reviews</a></p>
+
+    <h2>Suggested one-week experiment</h2>
+    <p>Instrument the Hoppy PopUps editor boot sequence and create a support alert when a new user sees two consecutive boot failures. Compare activation-to-first-published-popup before and after adding a recovery state. This directly tests the clearest recent low-star pattern.</p>
+
+    <h2>Want a brief like this for your portfolio?</h2>
+    <p>Shopify App Review Brief is for independent Shopify app teams managing 3+ active apps. When a new 1–3-star review appears on one of your apps or a named competitor, you get one prioritized, human-checked brief within one business day. The 14-day concierge pilot covers up to 10 owned apps and 5 competitors, with weekday monitoring and one consolidated brief. $49, charged only after you approve the first useful brief.</p>
+    <div class="cta-row">
+      <a class="button" data-cta href="https://github.com/alfredtech2026/microsaas-1k/issues/new?labels=pilot-inquiry&amp;title=Pilot%20inquiry%3A%20Shopify%20App%20Review%20Brief&amp;body=Team%20/%20company%3A%20%0AYour%20Shopify%20apps%20%283%2B%20active%2C%20links%29%3A%20%0ACompetitors%20to%20watch%20%28up%20to%205%2C%20optional%29%3A%20%0ABest%20way%20to%20reach%20you%3A%20%0A%0AI%20understand%20this%20is%20an%20opt-in%20inquiry%20for%20the%2014-day%20concierge%20pilot%20%28%2449%2C%20charged%20only%20after%20I%20approve%20the%20first%20useful%20brief%29.%0A%0ASource%20page%3A%20sample-hoppy-apps%0A">Start a pilot inquiry</a>
+      <a class="button secondary" href="../#pilot">Pilot details</a>
+    </div>
+    <p class="cta-note">Opt-in only: the inquiry is a GitHub issue you choose to post. We never cold-email or cold-message anyone.</p>
+  </main>
+
+  <footer class="site">
+    <p>Shopify App Review Brief is an independent service and is not affiliated with or endorsed by Shopify Inc., Hoppy Apps, or any other app developer named on this site. Featured companies may request changes or removal via a <a href="https://github.com/alfredtech2026/microsaas-1k/issues">GitHub issue</a>.</p>
+    <p>Privacy: this site sets no cookies, runs no third-party analytics, and collects nothing about you.</p>
+    <p><a href="../">Home</a> · <a href="hoppy-apps.html" aria-current="page">Hoppy Apps sample</a> · <a href="helixo.html">Helixo sample</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      var utm = new URLSearchParams(location.search);
+      var tags = ["utm_source", "utm_medium", "utm_campaign"].map(function (k) {
+        return utm.get(k);
+      }).filter(Boolean);
+      if (!tags.length) return;
+      document.querySelectorAll("a[data-cta]").forEach(function (a) {
+        var u = new URL(a.href);
+        u.searchParams.set("body",
+          u.searchParams.get("body") + "Channel: " + tags.join(" / ") + "\n");
+        a.href = u.toString();
+      });
+    })();
+  </script>
+</body>
+</html>
