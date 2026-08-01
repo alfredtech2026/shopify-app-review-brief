@@ -248,6 +248,19 @@ details.rules summary { cursor: pointer; font-weight: 600; }
 .kw-list dt { font-weight: 600; margin-top: 0.9rem; }
 .kw-list dd { margin: 0.15rem 0 0 0; color: var(--ink-soft); font-size: 0.92rem; }
 
+/* Guide pages */
+
+pre.template {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
 kbd {
   background: var(--code-bg);
   border: 1px solid var(--border);

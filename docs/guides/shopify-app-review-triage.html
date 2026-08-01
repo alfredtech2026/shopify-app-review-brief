@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to triage low-star Shopify app reviews — severity rubric, workflow, and brief template</title>
+  <meta name="description" content="A practical guide for independent Shopify app teams: a four-level severity rubric for 1–3-star App Store reviews, tie-break rules, a weekly triage workflow, and a copyable Markdown brief template — plus a free in-browser worksheet that automates the first pass.">
+  <link rel="canonical" href="https://alfredtech2026.github.io/shopify-app-review-brief/guides/shopify-app-review-triage.html">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to triage low-star Shopify app reviews">
+  <meta property="og:description" content="A four-level severity rubric for 1–3-star App Store reviews, a weekly workflow, and a copyable Markdown brief template for independent Shopify app teams.">
+  <meta property="og:url" content="https://alfredtech2026.github.io/shopify-app-review-brief/guides/shopify-app-review-triage.html">
+  <meta property="og:site_name" content="Shopify App Review Brief">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How to triage low-star Shopify app reviews">
+  <meta name="twitter:description" content="A four-level severity rubric, a weekly workflow, and a copyable Markdown brief template for independent Shopify app teams.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "How to triage low-star Shopify app reviews: severity rubric, workflow, and brief template",
+    "description": "A four-level severity rubric for 1–3-star Shopify App Store reviews, tie-break rules, a weekly triage workflow, and a copyable Markdown brief template for independent Shopify app teams.",
+    "url": "https://alfredtech2026.github.io/shopify-app-review-brief/guides/shopify-app-review-triage.html",
+    "datePublished": "2026-08-01",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Shopify App Review Brief",
+      "url": "https://alfredtech2026.github.io/shopify-app-review-brief/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site">
+    <a class="brand" href="../">Shopify App Review Brief</a>
+    <nav class="site" aria-label="Site">
+      <a href="#rubric">Rubric</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#template">Template</a>
+      <a href="../#pilot">Pilot</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <p><span class="pill">Guide</span> <span class="pill">Evergreen — no tooling required</span> <span class="pill">Public review data only</span></p>
+    <h1>How to triage low-star Shopify app reviews</h1>
+    <p class="lede">A severity rubric, a weekly workflow, and a copyable brief template — so a new 1–3-star review becomes a decision your team can act on, not just another notification.</p>
+
+    <h2 id="why">Why triage instead of just replying</h2>
+    <p>With one app, you can read every review the moment it lands. With a portfolio — say, 3+ active apps plus the competitors you watch — low-star reviews arrive scattered across listings, and each one competes for the same limited attention. The common failure mode is not ignoring them; it is treating them all as equally urgent, replying fastest to whichever arrived last, and never turning the pile into a plan.</p>
+    <p>Triage fixes that by answering one question per review before anything else: <strong>what kind of problem is this, and how badly can it hurt?</strong> A checkout overlay that will not close is not the same class of problem as a merchant who misread the pricing page, and neither is a feature wish. Sorting first means the scarce work — reproduction, fixes, copy changes — goes where it matters.</p>
+    <p>One ground rule throughout this guide: reviews are <strong>customer reports, not verified defects</strong>. A review tells you what a merchant experienced and how they describe it; it does not tell you what your code did. Every step below keeps that distinction explicit, and every item in the final brief links back to its public source so anyone can check the original wording.</p>
+
+    <h2 id="rubric">The severity rubric</h2>
+    <p>Classify each 1–3-star review into exactly one primary dimension. Four dimensions cover most low-star reviews; anything that fits none of them goes to a fifth bucket, <strong>Needs human read</strong>, rather than being forced into a category.</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Severity rubric for low-star Shopify app reviews</caption>
+        <thead>
+          <tr><th scope="col">Priority</th><th scope="col">Dimension</th><th scope="col">What it means</th><th scope="col">Review language that signals it</th><th scope="col">First move</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="priority">P0</span></td>
+            <td>Incident risk</td>
+            <td>The purchase path, app activation, or merchant data may be at stake right now. Left alone, this costs the merchant money and you installs.</td>
+            <td>&ldquo;won&rsquo;t load&rdquo;, &ldquo;blank screen&rdquo;, &ldquo;can&rsquo;t close&rdquo;, &ldquo;broken at checkout&rdquo;, &ldquo;stopped working&rdquo;, &ldquo;losing sales&rdquo;</td>
+            <td>Try to reproduce on a development store the same day. If it reproduces, treat it as an incident: fix or mitigate first, reply after.</td>
+          </tr>
+          <tr>
+            <td><span class="priority">P1</span></td>
+            <td>Repeated friction</td>
+            <td>The product works, but the same struggle keeps showing up — in reviews, or between reviews and support tickets. Repetition is the signal.</td>
+            <td>&ldquo;confusing&rdquo;, &ldquo;hard to&rdquo;, &ldquo;setup took hours&rdquo;, &ldquo;had to contact support&rdquo;, &ldquo;too many steps&rdquo;</td>
+            <td>Log it against the matching support theme. When a theme repeats, schedule the UX or docs fix ahead of new feature work.</td>
+          </tr>
+          <tr>
+            <td><span class="priority">P2</span></td>
+            <td>Pricing confusion</td>
+            <td>What the merchant expected to pay and what happened diverged. Usually a copy problem — in the listing, the plan limits, or the upgrade prompts — not a code problem.</td>
+            <td>&ldquo;charged&rdquo;, &ldquo;billed after uninstalling&rdquo;, &ldquo;hidden fee&rdquo;, &ldquo;free plan&rdquo;, &ldquo;trial&rdquo;</td>
+            <td>Compare what the reviewer expected with what the pricing section and in-app prompts actually say; clarify the copy where they diverge.</td>
+          </tr>
+          <tr>
+            <td><span class="priority">P3</span></td>
+            <td>Feature request</td>
+            <td>The merchant wants something the app does not do (or they could not find). Valuable as a log entry, rarely urgent on its own.</td>
+            <td>&ldquo;wish it could&rdquo;, &ldquo;please add&rdquo;, &ldquo;missing&rdquo;, &ldquo;no option to&rdquo;</td>
+            <td>Add it to the feature-request log with a link to the review. If the capability already exists, reply with where to find it.</td>
+          </tr>
+          <tr>
+            <td><span class="priority">—</span></td>
+            <td>Needs human read</td>
+            <td>Nothing above clearly fits. Vague frustration, mixed praise, sarcasm, or a story that needs context.</td>
+            <td>Anything that resists a one-line summary</td>
+            <td>Read the full review and classify it yourself. An honest &ldquo;unsorted&rdquo; beats a confident wrong guess.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>These are the same four dimensions and priorities used by our <a href="../tools/review-triage-worksheet.html">free in-browser worksheet</a> and the published <a href="../#samples">sample briefs</a>, so a manual pass and a tool-assisted pass produce comparable output.</p>
+
+    <h3 id="tie-breaks">Tie-break and escalation rules</h3>
+    <p>Real reviews rarely fit one box cleanly. These five rules resolve the common collisions:</p>
+    <ol>
+      <li><strong>Most severe wins.</strong> A review that mentions both a broken checkout and a billing surprise files under P0 incident risk, with the pricing point noted as secondary. Never split one review across two brief items.</li>
+      <li><strong>Repetition escalates.</strong> If the same friction or pricing theme appears in three or more reviews within about 60 days, move it up one level. Three merchants independently describing the same confusing setup is a product defect in practice, whatever the code says.</li>
+      <li><strong>Age discounts.</strong> A review more than a year old is historical context, not evidence of a current problem — unless a recent review corroborates it. Cite old reviews as background, never as the headline.</li>
+      <li><strong>Competitor reviews never create a P0 for you.</strong> A competitor&rsquo;s incident is your positioning and roadmap input — something to watch, or a reliability point to make honestly if your telemetry supports it — not your emergency.</li>
+      <li><strong>When unsure, choose &ldquo;needs human read.&rdquo;</strong> The bucket exists so the rubric never launders uncertainty into a priority label.</li>
+    </ol>
+
+    <h2 id="workflow">The weekly workflow</h2>
+    <p>For a portfolio of three to ten apps, this takes roughly 30 minutes a week once it is routine. Do it on a fixed day; add an extra same-day pass only when a new 1-star review lands on an app with a purchase-path surface.</p>
+    <ol>
+      <li><strong>Collect (5 min).</strong> Open each app&rsquo;s public reviews page filtered to low ratings — the Shopify App Store supports filtering a listing&rsquo;s reviews by star rating — and do the same for up to five named competitors. Copy every review that is new since your last pass into a scratch file, one review per line: <code>rating | app name | review text</code>. This covers the reviews visible on public listing pages at the time you look — the workflow makes no claim of exhaustive coverage.</li>
+      <li><strong>First pass (5 min).</strong> Classify each line with the rubric above — or paste the lines into the <a href="../tools/review-triage-worksheet.html">review triage worksheet</a>, which applies the same dimensions with a transparent keyword heuristic, entirely in your browser. Either way, the first pass is a sort, not a verdict.</li>
+      <li><strong>Verify P0 candidates (10 min).</strong> For each incident-risk item, attempt to reproduce on a development store, and check your error tracker and support inbox for matching signals from the same period. Record the outcome — <em>reproduced</em>, <em>not reproduced</em>, or <em>attempted, notes attached</em> — before anyone replies to the review.</li>
+      <li><strong>Cluster (5 min).</strong> Look across apps and across weeks: the same friction keyword in two different apps&rsquo; reviews is one theme, not two items. Apply the escalation rule here.</li>
+      <li><strong>Write the brief (5 min).</strong> Use the <a href="#template">template below</a>. The discipline that keeps it useful: every item gets an owner, a next action, and a source link. An item without an owner is a note, not a brief entry.</li>
+      <li><strong>Close the loop.</strong> Reply to reviewers after the action is taken or the confusion is clarified — a reply that says what actually changed is worth more than a fast apology. Carry unresolved items into next week&rsquo;s brief until they are closed.</li>
+    </ol>
+
+    <h3 id="replies">A note on replying</h3>
+    <p>Developer replies are public and permanent, so treat them as documentation. Verify before you reply — a reply that disputes a report you have not tried to reproduce reads badly if the reviewer turns out to be right. Be specific about what you checked and what changed. And never argue with the reviewer in public: if the report is wrong, say what you tested and invite them to support, where you can actually see their store&rsquo;s configuration.</p>
+
+    <h2 id="template">The brief template</h2>
+    <p>This is the Markdown skeleton for the weekly output — one document per portfolio, sections ordered by the rubric. Copy it into your issue tracker, wiki, or team chat and delete the placeholder comments as you fill it in.</p>
+    <div class="cta-row" role="group" aria-label="Template actions">
+      <button type="button" class="button" id="template-copy">Copy template as Markdown</button>
+    </div>
+    <p class="status" id="template-status" role="status" aria-live="polite"></p>
+    <pre class="template" id="brief-template"># Low-star review brief — {portfolio or team name} — week of {YYYY-MM-DD}
+
+Scope: {apps monitored} · {competitors watched} · reviews from {date range}.
+Reminder: reviews are customer reports, not verified defects — link every item
+to its public source and verify before shipping a fix.
+
+## P0 — Incident risk
+&lt;!-- Purchase path, activation, or data at stake. Reproduce before treating as an incident. --&gt;
+- **{App} — {signal in a few words}** ({rating}★, {review date}, [source]({review URL}))
+  - Reviewer reports: {one sentence, in their words where possible}
+  - Reproduced: {yes / no / attempted — notes}
+  - Next action: {action} — owner {name}, due {date}
+
+## P1 — Repeated friction
+&lt;!-- Same complaint in 2+ reviews, or one review matching an open support theme. --&gt;
+- **{App} — {theme}** ({rating}★, {date}, [source]({review URL}); also seen: {where})
+  - Next action: {UX or docs change} — owner {name}, due {date}
+
+## P2 — Pricing confusion
+&lt;!-- What the reviewer expected vs. what the listing and upgrade prompts say. --&gt;
+- **{App} — {signal}** ({rating}★, {date}, [source]({review URL}))
+  - Expected vs. actual: {one line}
+  - Next action: {copy or prompt change} — owner {name}, due {date}
+
+## P3 — Feature requests
+- **{App} — {request}** ({rating}★, {date}, [source]({review URL})) — {log it / already exists → reply with where to find it}
+
+## Needs human read
+- **{App}** ({rating}★, {date}, [source]({review URL})) — {why it resisted classification, and your call}
+
+## Competitor watch
+- **{Competitor} — {signal}**: {what it implies for our roadmap, copy, or positioning}
+
+## Decisions this week
+- {one decision or experiment, with the review(s) that motivated it}
+</pre>
+
+    <h2 id="mistakes">Five mistakes that undo the whole exercise</h2>
+    <ul>
+      <li><strong>Replying before verifying.</strong> The public reply is the last step of triage, not the first.</li>
+      <li><strong>Reading one loud review as a trend</strong> — or three quiet ones as noise. Count occurrences; the escalation rule exists for a reason.</li>
+      <li><strong>Filing everything as a bug.</strong> Pricing confusion is usually a copy problem. Shipping code at it fixes nothing.</li>
+      <li><strong>Counting competitor reviews as your incidents.</strong> They belong in the watch section, informing what you build and how you describe it.</li>
+      <li><strong>Letting the brief become an archive.</strong> If items accumulate without owners and due dates, you have built a second inbox. Every entry is a decision or it is deleted.</li>
+    </ul>
+
+    <h2 id="tools">Do the first pass automatically</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3><a href="../tools/review-triage-worksheet.html">Free review triage worksheet</a></h3>
+        <p>Paste your review lines and get the rubric&rsquo;s first pass applied for you — a transparent keyword heuristic that runs entirely in your browser, with a Markdown draft to copy. No uploads, no cookies, and its output is labeled exactly what it is: a first pass, not human-checked.</p>
+      </div>
+      <div class="card">
+        <h3><a href="../#samples">Two worked sample briefs</a></h3>
+        <p>See the rubric applied end-to-end to real public reviews: an activation-failure pattern at a popup app, and a purchase-path risk synthesized across a three-app portfolio.</p>
+      </div>
+    </div>
+
+    <h2 id="pilot-cta">If you&rsquo;d rather not do this weekly</h2>
+    <p>Everything above is the manual version of what the <a href="../">Shopify App Review Brief</a> does as a concierge service: for independent Shopify app teams managing <strong>3+ active apps</strong>, every new <strong>1–3-star review</strong> across your portfolio and up to five named competitors becomes one prioritized, human-checked brief — with source links — within <strong>one business day</strong>. The 14-day concierge pilot is <strong>$49, charged only after</strong> you approve the first useful brief.</p>
+    <div class="cta-row">
+      <a class="button" data-cta href="https://github.com/alfredtech2026/shopify-app-review-brief/issues/new?labels=pilot-inquiry&amp;title=Pilot%20inquiry%3A%20Shopify%20App%20Review%20Brief&amp;body=Team%20/%20company%3A%20%0AYour%20Shopify%20apps%20%283%2B%20active%2C%20links%29%3A%20%0ACompetitors%20to%20watch%20%28up%20to%205%2C%20optional%29%3A%20%0ABest%20way%20to%20reach%20you%3A%20%0A%0AI%20understand%20this%20is%20an%20opt-in%20inquiry%20for%20the%2014-day%20concierge%20pilot%20%28%2449%2C%20charged%20only%20after%20I%20approve%20the%20first%20useful%20brief%29.%0A%0ASource%20page%3A%20guide-review-triage%0A">Start a pilot inquiry</a>
+      <a class="button secondary" href="../#samples">See real sample briefs</a>
+    </div>
+    <p class="cta-note">The inquiry opens a prefilled GitHub issue — an explicitly opt-in channel. Nothing is sent to you until you post it, and we never cold-email or cold-message anyone.</p>
+  </main>
+
+  <footer class="site">
+    <p>This guide is published by Shopify App Review Brief, an independent service not affiliated with or endorsed by Shopify Inc. or any app developer. It describes a general workflow over public App Store data and is not legal or compliance advice.</p>
+    <p>Privacy: this page sets no cookies, runs no third-party analytics, stores nothing, and sends nothing over the network.</p>
+    <p><a href="../">Home</a> · <a href="../samples/hoppy-apps.html">Hoppy Apps sample</a> · <a href="../samples/helixo.html">Helixo sample</a> · <a href="../tools/review-triage-worksheet.html">Review triage worksheet</a> · <a href="shopify-app-review-triage.html" aria-current="page">Triage guide</a></p>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var pre = document.getElementById("brief-template");
+    var status = document.getElementById("template-status");
+    document.getElementById("template-copy").addEventListener("click", function () {
+      var done = function () { status.textContent = "Template copied to your clipboard — generated locally, nothing was sent anywhere."; };
+      var fail = function () {
+        var range = document.createRange();
+        range.selectNodeContents(pre);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        status.textContent = "Automatic copy was blocked — the template is selected; press Ctrl+C or ⌘C.";
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(pre.textContent).then(done, fail);
+      } else {
+        fail();
+      }
+    });
+
+    // Privacy-respecting attribution: if the visitor arrived with utm_* params,
+    // echo them into the prefilled inquiry body so inbound issues self-report
+    // their channel. No cookies, no storage, no network calls.
+    var utm = new URLSearchParams(location.search);
+    var tags = ["utm_source", "utm_medium", "utm_campaign"].map(function (k) {
+      return utm.get(k);
+    }).filter(Boolean);
+    if (tags.length) {
+      document.querySelectorAll("a[data-cta]").forEach(function (a) {
+        var u = new URL(a.href);
+        u.searchParams.set("body",
+          u.searchParams.get("body") + "Channel: " + tags.join(" / ") + "\n");
+        a.href = u.toString();
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
