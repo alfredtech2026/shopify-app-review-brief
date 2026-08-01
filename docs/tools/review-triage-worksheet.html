@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Triage Worksheet — sort Shopify app reviews locally, in your browser</title>
+  <meta name="description" content="A free local first-pass worksheet for independent Shopify app teams managing 3+ active apps: paste public review rows and triage them into incident risk, repeated friction, pricing confusion, and feature requests — entirely in your browser, with a copyable Markdown draft. No uploads, no cookies, no analytics.">
+  <link rel="canonical" href="https://alfredtech2026.github.io/shopify-app-review-brief/tools/review-triage-worksheet.html">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Review Triage Worksheet — a free local first pass for Shopify app reviews">
+  <meta property="og:description" content="Paste public review rows and sort them into incident risk, repeated friction, pricing confusion, and feature requests — entirely in your browser. Copy or download a Markdown draft. No uploads, no cookies.">
+  <meta property="og:url" content="https://alfredtech2026.github.io/shopify-app-review-brief/tools/review-triage-worksheet.html">
+  <meta property="og:site_name" content="Shopify App Review Brief">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Review Triage Worksheet — a free local first pass for Shopify app reviews">
+  <meta name="twitter:description" content="Paste public review rows and sort them into incident risk, repeated friction, pricing confusion, and feature requests — entirely in your browser.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Review Triage Worksheet",
+    "url": "https://alfredtech2026.github.io/shopify-app-review-brief/tools/review-triage-worksheet.html",
+    "description": "A free local first-pass worksheet for Shopify app teams: paste public App Store review rows and triage them by transparent keyword heuristics into incident risk, repeated friction, pricing confusion, and feature requests, with a suggested action per group and a Markdown draft to copy or download. Runs entirely in the browser; no data is transmitted or stored.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Runs entirely in the browser; no data is transmitted.",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": {
+      "@type": "Service",
+      "name": "Shopify App Review Brief",
+      "url": "https://alfredtech2026.github.io/shopify-app-review-brief/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site">
+    <a class="brand" href="../">Shopify App Review Brief</a>
+    <nav class="site" aria-label="Site">
+      <a href="../#samples">Sample briefs</a>
+      <a href="../#pilot">Pilot</a>
+      <a href="#worksheet">Worksheet</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <p><span class="pill">Free local tool</span> <span class="pill">Runs entirely in your browser</span> <span class="pill">Public review text only</span></p>
+    <h1>Review triage worksheet — a first pass over your low-star reviews, locally</h1>
+    <p class="lede">For independent Shopify app teams managing 3+ active apps: paste public review rows below and get them sorted into the same dimensions our briefs use — incident risk, repeated friction, pricing confusion, and feature requests — each with a suggested action, plus a Markdown draft you can copy into your issue tracker.</p>
+
+    <div class="notice">
+      <p><strong>What this is (and is not):</strong></p>
+      <ul>
+        <li>This is a <strong>local first-pass worksheet</strong> built on a transparent keyword heuristic — every rule it applies is listed under <a href="#how-it-works">“How the triage works”</a> below.</li>
+        <li>Everything runs entirely in your browser: <strong>no uploads, no network calls, no cookies, no storage, no analytics</strong>. Your pasted text never leaves this page.</li>
+        <li>Its output is <strong>not human-checked</strong>. A keyword match is a hint, not a verdict — it is <strong>not a replacement</strong> for reading the reviews or for the human-checked concierge brief.</li>
+        <li>Paste <strong>public App Store review text only</strong>. Please don’t paste private customer data, support tickets, or anything not already public.</li>
+      </ul>
+    </div>
+
+    <h2 id="how-to-use">How to use it</h2>
+    <ol>
+      <li>Open the public reviews page of one of your apps (or a named competitor) on the Shopify App Store.</li>
+      <li>Copy recent low-star reviews into the box below, <strong>one review per line</strong>, ideally as <code>rating | app name | review text</code>. The rating and app name are optional — a bare line of review text works too. Lines starting with <code>#</code> are ignored.</li>
+      <li>Press <strong>Triage reviews</strong> (or <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Enter</kbd> inside the box).</li>
+      <li>Read the prioritized table, then copy or download the Markdown draft for your issue tracker or team chat.</li>
+    </ol>
+
+    <h2 id="worksheet">The worksheet</h2>
+    <noscript>
+      <div class="notice"><p>This worksheet needs JavaScript to run — it is a small inline script on this page that works entirely locally and makes no network requests. With JavaScript disabled, the triage rules under “How the triage works” below still describe exactly how to sort reviews by hand.</p></div>
+    </noscript>
+    <div class="field">
+      <label for="triage-input">Review rows — one per line, as <code>rating | app name | review text</code></label>
+      <p class="hint" id="triage-input-hint">Example row: <code>1 | Example Popup App | The editor shows a blank screen and the popup won't load.</code></p>
+      <textarea id="triage-input" class="tool-input" rows="12" spellcheck="false"
+        aria-describedby="triage-input-hint"
+        placeholder="1 | Example Popup App | The editor shows a blank screen and the popup won't load.&#10;2 | Example Currency App | We were charged after uninstalling.&#10;Great app, but I wish it could export reviews to CSV."></textarea>
+    </div>
+    <div class="cta-row" role="group" aria-label="Worksheet actions">
+      <button type="button" class="button" id="triage-run">Triage reviews</button>
+      <button type="button" class="button secondary" id="triage-example">Load fictional example rows</button>
+      <button type="button" class="button secondary" id="triage-clear">Clear</button>
+    </div>
+    <p class="status" id="triage-status" role="status" aria-live="polite"></p>
+
+    <section id="triage-results-section" hidden>
+      <h2 id="triage-results-heading" tabindex="-1">First-pass triage</h2>
+      <p class="hint">Heuristic keyword output — not human-checked. Verify every row against the original review before acting.</p>
+      <div id="triage-results"></div>
+
+      <h2 id="triage-markdown-heading">Markdown draft</h2>
+      <div class="cta-row" role="group" aria-label="Markdown draft actions">
+        <button type="button" class="button" id="triage-copy" disabled>Copy Markdown</button>
+        <button type="button" class="button secondary" id="triage-download" disabled>Download .md</button>
+      </div>
+      <div class="field">
+        <label for="triage-markdown">Markdown draft (read-only — edit after pasting into your tracker)</label>
+        <textarea id="triage-markdown" class="tool-input tool-output" rows="14" readonly spellcheck="false"></textarea>
+      </div>
+    </section>
+
+    <h2 id="how-it-works">How the triage works — the complete rule set</h2>
+    <p>Each review’s text is lower-cased and checked against the keyword lists below, in order. The first dimension with a matching keyword becomes the row’s primary dimension; further matches are noted as secondary. Rows matching nothing go to a <strong>“Needs human read”</strong> bucket — the heuristic never pretends to understand them. If the same friction keyword appears in two or more rows, those rows are flagged as repeated. That’s the whole algorithm; there is no model, scoring, or hidden logic.</p>
+    <details class="rules">
+      <summary>Show the exact keyword lists and suggested actions</summary>
+      <dl class="kw-list" id="rules-list"></dl>
+    </details>
+    <p><strong>Known limits:</strong> keyword matching is English-only, misses sarcasm and context, can misfile a review that mentions “checkout” in passing, and covers only the text you paste — it makes no claim of exhaustive coverage. That is why every output is labeled a first pass.</p>
+
+    <h2 id="pilot-cta">When the first pass isn’t enough</h2>
+    <p>This worksheet sorts the reviews you already found. The <a href="../">Shopify App Review Brief</a> is the human-checked version of the same job: for independent Shopify app teams managing <strong>3+ active apps</strong>, every new <strong>1–3-star review</strong> across your portfolio and up to five named competitors becomes one prioritized, human-checked brief — with source links — within <strong>one business day</strong>. The 14-day concierge pilot is <strong>$49, charged only after</strong> you approve the first useful brief.</p>
+    <div class="cta-row">
+      <a class="button" data-cta href="https://github.com/alfredtech2026/shopify-app-review-brief/issues/new?labels=pilot-inquiry&amp;title=Pilot%20inquiry%3A%20Shopify%20App%20Review%20Brief&amp;body=Team%20/%20company%3A%20%0AYour%20Shopify%20apps%20%283%2B%20active%2C%20links%29%3A%20%0ACompetitors%20to%20watch%20%28up%20to%205%2C%20optional%29%3A%20%0ABest%20way%20to%20reach%20you%3A%20%0A%0AI%20understand%20this%20is%20an%20opt-in%20inquiry%20for%20the%2014-day%20concierge%20pilot%20%28%2449%2C%20charged%20only%20after%20I%20approve%20the%20first%20useful%20brief%29.%0A%0ASource%20page%3A%20tool-review-triage%0A">Start a pilot inquiry</a>
+      <a class="button secondary" href="../#samples">See real sample briefs</a>
+    </div>
+    <p class="cta-note">The inquiry opens a prefilled GitHub issue — an explicitly opt-in channel. Nothing is sent to you until you post it, and we never cold-email or cold-message anyone.</p>
+  </main>
+
+  <footer class="site">
+    <p>Review Triage Worksheet is a free companion tool of Shopify App Review Brief, an independent service not affiliated with or endorsed by Shopify Inc. or any app developer. Example rows in this tool are fictional.</p>
+    <p>Privacy: this page sets no cookies, runs no third-party analytics, stores nothing, and sends nothing over the network. Text you paste is processed in your browser only and disappears when you close the tab.</p>
+    <p><a href="../">Home</a> · <a href="../samples/hoppy-apps.html">Hoppy Apps sample</a> · <a href="../samples/helixo.html">Helixo sample</a> · <a href="review-triage-worksheet.html">Review triage worksheet</a></p>
+  </footer>
+
+  <script type="application/json" id="triage-rules">
+  {
+    "dimensions": [
+      {
+        "key": "incident-risk",
+        "label": "Incident risk",
+        "priority": "P0",
+        "action": "Try to reproduce on a test store today. If confirmed, treat it as an incident: fix or mitigate first, then reply to the reviewer with what changed.",
+        "keywords": ["won't load", "wont load", "won't open", "wont open", "can't close", "cannot close", "won't close", "blank screen", "broken", "crash", "stopped working", "not working", "doesn't work", "does not work", "checkout", "losing sales", "lost sales", "error"]
+      },
+      {
+        "key": "repeated-friction",
+        "label": "Repeated friction",
+        "priority": "P1",
+        "action": "Log it against the matching support theme. If the same complaint repeats across rows, schedule a UX fix ahead of new feature work.",
+        "keywords": ["confusing", "unclear", "hard to", "difficult", "complicated", "clunky", "slow", "couldn't figure", "could not figure", "annoying", "had to contact support", "setup took", "too many steps"]
+      },
+      {
+        "key": "pricing-confusion",
+        "label": "Pricing confusion",
+        "priority": "P2",
+        "action": "Compare what the reviewer expected with the listing's pricing section and in-app upgrade prompts; clarify the copy where they diverge.",
+        "keywords": ["pricing", "price", "charged", "charge", "billing", "billed", "expensive", "free plan", "trial", "refund", "hidden fee", "hidden cost", "paywall"]
+      },
+      {
+        "key": "feature-request",
+        "label": "Feature request",
+        "priority": "P3",
+        "action": "Add it to the feature-request log with a link to the review. If the capability already exists, reply to the reviewer with where to find it.",
+        "keywords": ["wish", "would be great", "would love", "please add", "feature request", "missing", "if only", "would like", "no option to", "needs an option", "hope you add", "add support for"]
+      }
+    ],
+    "unmatchedLabel": "Needs human read",
+    "unmatchedPriority": "P2",
+    "unmatchedAction": "No keyword matched. Read the full review yourself and file it manually — the heuristic makes no guess here.",
+    "examples": [
+      { "row": "1 | Example Popup App | The editor shows a blank screen and the popup won't load. We are losing sales every day.", "expected": ["incident-risk"] },
+      { "row": "2 | Example Popup App | The overlay can't close on mobile and it blocks the checkout button.", "expected": ["incident-risk"] },
+      { "row": "1 | Example Currency App | Conversion is broken at checkout and we were still billed for the month.", "expected": ["incident-risk", "pricing-confusion"] },
+      { "row": "3 | Example Currency App | Setup took hours and the settings screen is confusing. Support was slow to reply.", "expected": ["repeated-friction"] },
+      { "row": "3 | Example Reviews App | The widget looks fine but the template editor is confusing and hard to use on a tablet.", "expected": ["repeated-friction"] },
+      { "row": "2 | Example Currency App | We kept getting charged after uninstalling, and the pricing page never mentioned this.", "expected": ["pricing-confusion"] },
+      { "row": "4 | Example Reviews App | Great app, but I wish it could export reviews to CSV. Please add filtering by country.", "expected": ["feature-request"] },
+      { "row": "5 | Example Reviews App | Does what it promises and support replied the same day.", "expected": [] }
+    ]
+  }
+  </script>
+
+  <script>
+  (function () {
+    "use strict";
+    var TOOL_URL = "https://alfredtech2026.github.io/shopify-app-review-brief/tools/review-triage-worksheet.html";
+
+    // >>> triage-core — pure functions, no DOM access.
+    // Exercised directly by scripts/test_triage_worksheet.py via Node.
+    function parseRating(field) {
+      var m = /^\s*([1-5])\s*(?:★|stars?)?\s*$/i.exec(field || "");
+      return m ? Number(m[1]) : null;
+    }
+
+    function parseRows(input) {
+      var rows = [];
+      String(input || "").split(/\r?\n/).forEach(function (raw) {
+        var line = raw.trim();
+        if (!line || line.charAt(0) === "#") return;
+        var fields = line.split("|").map(function (f) { return f.trim(); });
+        var rating = null, app = "", text = "";
+        if (fields.length >= 3) {
+          rating = parseRating(fields[0]);
+          app = fields[1];
+          text = fields.slice(2).join(" | ");
+        } else if (fields.length === 2) {
+          rating = parseRating(fields[0]);
+          if (rating === null) app = fields[0];
+          text = fields[1];
+        } else {
+          text = fields[0];
+        }
+        if (text) rows.push({ rating: rating, app: app, text: text });
+      });
+      return rows;
+    }
+
+    function classifyRow(text, rules) {
+      // Curly apostrophes are normalized so pasted “won’t load” matches "won't load".
+      var lower = String(text).toLowerCase().replace(/[‘’]/g, "'");
+      var matched = [], hits = {};
+      rules.dimensions.forEach(function (d) {
+        var found = d.keywords.filter(function (kw) { return lower.indexOf(kw) !== -1; });
+        if (found.length) { matched.push(d.key); hits[d.key] = found; }
+      });
+      return { matched: matched, hits: hits };
+    }
+
+    function triage(input, rules) {
+      var items = parseRows(input).map(function (r) {
+        var c = classifyRow(r.text, rules);
+        return { rating: r.rating, app: r.app, text: r.text, matched: c.matched, hits: c.hits };
+      });
+      var frictionCounts = {};
+      items.forEach(function (it) {
+        (it.hits["repeated-friction"] || []).forEach(function (kw) {
+          frictionCounts[kw] = (frictionCounts[kw] || 0) + 1;
+        });
+      });
+      var order = {};
+      rules.dimensions.forEach(function (d, i) { order[d.key] = i; });
+      var sorted = items.map(function (it, i) { return { it: it, i: i }; })
+        .sort(function (a, b) {
+          var ra = a.it.matched.length ? order[a.it.matched[0]] : rules.dimensions.length;
+          var rb = b.it.matched.length ? order[b.it.matched[0]] : rules.dimensions.length;
+          return ra - rb || a.i - b.i;
+        })
+        .map(function (x) { return x.it; });
+      var counts = { unmatched: 0 };
+      rules.dimensions.forEach(function (d) { counts[d.key] = 0; });
+      items.forEach(function (it) {
+        if (it.matched.length) counts[it.matched[0]] += 1; else counts.unmatched += 1;
+      });
+      return { items: sorted, counts: counts, frictionCounts: frictionCounts, total: items.length };
+    }
+
+    function dimensionByKey(key, rules) {
+      for (var i = 0; i < rules.dimensions.length; i++) {
+        if (rules.dimensions[i].key === key) return rules.dimensions[i];
+      }
+      return null;
+    }
+
+    function repeatedNotes(it, result) {
+      return (it.hits["repeated-friction"] || []).filter(function (kw) {
+        return result.frictionCounts[kw] >= 2;
+      }).map(function (kw) {
+        return "repeated “" + kw + "” ×" + result.frictionCounts[kw];
+      });
+    }
+
+    function itemMeta(it, dim, result, rules) {
+      var meta = [];
+      if (it.rating !== null) meta.push(it.rating + "★");
+      var kws = dim ? it.hits[dim.key] : [];
+      if (kws && kws.length) meta.push("matched: " + kws.join(", "));
+      if (it.matched.length > 1) {
+        meta.push("also: " + it.matched.slice(1).map(function (k) {
+          return dimensionByKey(k, rules).label.toLowerCase();
+        }).join(", "));
+      }
+      if (dim && dim.key === "repeated-friction") meta = meta.concat(repeatedNotes(it, result));
+      return meta;
+    }
+
+    function toMarkdown(result, rules) {
+      var lines = [
+        "# Review triage worksheet — first-pass output",
+        "",
+        "> Generated locally in the browser by a transparent keyword heuristic.",
+        "> This output is not human-checked. Verify every item against the original review before acting.",
+        ""
+      ];
+      var summary = rules.dimensions.map(function (d) {
+        return result.counts[d.key] + " " + d.label.toLowerCase();
+      });
+      summary.push(result.counts.unmatched + " needs human read");
+      lines.push("Triaged " + result.total + " review row" + (result.total === 1 ? "" : "s") + ": " + summary.join(", ") + ".");
+      function pushGroup(label, priority, action, group, dim) {
+        if (!group.length) return;
+        lines.push("", "## " + label + " — " + priority, "", "Suggested action: " + action, "");
+        group.forEach(function (it) {
+          var meta = itemMeta(it, dim, result, rules);
+          lines.push("- **" + (it.app || "Unnamed app") + "**" + (meta.length ? " (" + meta.join("; ") + ")" : ""));
+          lines.push("  > " + it.text);
+        });
+      }
+      rules.dimensions.forEach(function (d) {
+        pushGroup(d.label, d.priority, d.action, result.items.filter(function (it) {
+          return it.matched[0] === d.key;
+        }), d);
+      });
+      pushGroup(rules.unmatchedLabel, rules.unmatchedPriority, rules.unmatchedAction,
+        result.items.filter(function (it) { return !it.matched.length; }), null);
+      lines.push("", "---", "", "Made with the free local Review Triage Worksheet: " + TOOL_URL);
+      return lines.join("\n") + "\n";
+    }
+    // <<< triage-core
+
+    var rules = JSON.parse(document.getElementById("triage-rules").textContent);
+    var input = document.getElementById("triage-input");
+    var status = document.getElementById("triage-status");
+    var section = document.getElementById("triage-results-section");
+    var resultsEl = document.getElementById("triage-results");
+    var mdArea = document.getElementById("triage-markdown");
+    var copyBtn = document.getElementById("triage-copy");
+    var downloadBtn = document.getElementById("triage-download");
+
+    function el(tag, text, className) {
+      var node = document.createElement(tag);
+      if (text) node.textContent = text;
+      if (className) node.className = className;
+      return node;
+    }
+
+    function renderRulesList() {
+      var dl = document.getElementById("rules-list");
+      rules.dimensions.forEach(function (d) {
+        dl.appendChild(el("dt", d.label + " (" + d.priority + ")"));
+        dl.appendChild(el("dd", "Keywords: " + d.keywords.join(", ")));
+        dl.appendChild(el("dd", "Suggested action: " + d.action));
+      });
+      dl.appendChild(el("dt", rules.unmatchedLabel + " (" + rules.unmatchedPriority + ")"));
+      dl.appendChild(el("dd", rules.unmatchedAction));
+    }
+
+    function renderResults(result) {
+      resultsEl.textContent = "";
+      var summary = rules.dimensions.map(function (d) {
+        return result.counts[d.key] + " " + d.label.toLowerCase();
+      });
+      summary.push(result.counts.unmatched + " needs human read");
+      resultsEl.appendChild(el("p",
+        "Triaged " + result.total + " review row" + (result.total === 1 ? "" : "s") + ": " + summary.join(", ") + "."));
+
+      var wrap = el("div", "", "table-wrap");
+      var table = document.createElement("table");
+      var caption = el("caption", "First-pass triage — heuristic output, not human-checked");
+      table.appendChild(caption);
+      var thead = document.createElement("thead");
+      var headRow = document.createElement("tr");
+      ["Priority", "Dimension", "App", "Rating", "Review", "Matched keywords", "Suggested action"].forEach(function (h) {
+        var th = el("th", h);
+        th.setAttribute("scope", "col");
+        headRow.appendChild(th);
+      });
+      thead.appendChild(headRow);
+      table.appendChild(thead);
+      var tbody = document.createElement("tbody");
+      result.items.forEach(function (it) {
+        var dim = it.matched.length ? dimensionByKey(it.matched[0], rules) : null;
+        var tr = document.createElement("tr");
+        var prio = el("td");
+        prio.appendChild(el("span", dim ? dim.priority : rules.unmatchedPriority, "priority"));
+        tr.appendChild(prio);
+        var dimLabel = dim ? dim.label : rules.unmatchedLabel;
+        if (it.matched.length > 1) {
+          dimLabel += " (also: " + it.matched.slice(1).map(function (k) {
+            return dimensionByKey(k, rules).label.toLowerCase();
+          }).join(", ") + ")";
+        }
+        tr.appendChild(el("td", dimLabel));
+        tr.appendChild(el("td", it.app || "—"));
+        tr.appendChild(el("td", it.rating !== null ? it.rating + "★" : "—"));
+        tr.appendChild(el("td", it.text));
+        var kws = dim ? it.hits[dim.key].slice() : [];
+        if (dim && dim.key === "repeated-friction") kws = kws.concat(repeatedNotes(it, result));
+        tr.appendChild(el("td", kws.length ? kws.join(", ") : "—"));
+        tr.appendChild(el("td", dim ? dim.action : rules.unmatchedAction));
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      wrap.appendChild(table);
+      resultsEl.appendChild(wrap);
+    }
+
+    function run() {
+      var result = triage(input.value, rules);
+      if (!result.total) {
+        section.hidden = true;
+        copyBtn.disabled = true;
+        downloadBtn.disabled = true;
+        status.textContent = "No review rows found — paste one review per line, then press “Triage reviews”.";
+        return;
+      }
+      renderResults(result);
+      mdArea.value = toMarkdown(result, rules);
+      section.hidden = false;
+      copyBtn.disabled = false;
+      downloadBtn.disabled = false;
+      status.textContent = "Triaged " + result.total + " row" + (result.total === 1 ? "" : "s") +
+        " entirely in your browser — nothing was uploaded. Results below.";
+      document.getElementById("triage-results-heading").focus();
+    }
+
+    document.getElementById("triage-run").addEventListener("click", run);
+
+    document.getElementById("triage-example").addEventListener("click", function () {
+      input.value = "# Fictional example rows — replace with public reviews of your own apps\n" +
+        rules.examples.map(function (e) { return e.row; }).join("\n");
+      status.textContent = "Loaded " + rules.examples.length +
+        " fictional example rows. Press “Triage reviews” to see the first pass.";
+      input.focus();
+    });
+
+    document.getElementById("triage-clear").addEventListener("click", function () {
+      input.value = "";
+      mdArea.value = "";
+      resultsEl.textContent = "";
+      section.hidden = true;
+      copyBtn.disabled = true;
+      downloadBtn.disabled = true;
+      status.textContent = "Cleared. Nothing was stored.";
+      input.focus();
+    });
+
+    copyBtn.addEventListener("click", function () {
+      var done = function () { status.textContent = "Markdown draft copied to your clipboard."; };
+      var fail = function () {
+        mdArea.focus();
+        mdArea.select();
+        status.textContent = "Automatic copy was blocked — the draft below is selected; press Ctrl+C or ⌘C.";
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mdArea.value).then(done, fail);
+      } else {
+        fail();
+      }
+    });
+
+    downloadBtn.addEventListener("click", function () {
+      var blob = new Blob([mdArea.value], { type: "text/markdown" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "review-triage-worksheet.md";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      status.textContent = "Downloaded review-triage-worksheet.md — generated locally.";
+    });
+
+    input.addEventListener("keydown", function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        e.preventDefault();
+        run();
+      }
+    });
+
+    renderRulesList();
+
+    // Privacy-respecting attribution: if the visitor arrived with utm_* params,
+    // echo them into the prefilled inquiry body so inbound issues self-report
+    // their channel. No cookies, no storage, no network calls.
+    var utm = new URLSearchParams(location.search);
+    var tags = ["utm_source", "utm_medium", "utm_campaign"].map(function (k) {
+      return utm.get(k);
+    }).filter(Boolean);
+    if (tags.length) {
+      document.querySelectorAll("a[data-cta]").forEach(function (a) {
+        var u = new URL(a.href);
+        u.searchParams.set("body",
+          u.searchParams.get("body") + "Channel: " + tags.join(" / ") + "\n");
+        a.href = u.toString();
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

@@ -12,3 +12,10 @@ Public landing page and sample briefs for a concierge service that turns new 1â€
 https://alfredtech2026.github.io/shopify-app-review-brief/
 
 The customer-facing site is dependency-free static HTML/CSS under `docs/` and is served by GitHub Pages. Pilot inquiries use this repositoryâ€™s public issue tracker.
+
+
+## Free review triage worksheet
+
+The site includes a privacy-preserving worksheet that turns pasted public review rows into a transparent first-pass triage and copyable Markdown draft. It runs locally in the browser with no uploads, cookies, storage, analytics, or external dependencies:
+
+https://alfredtech2026.github.io/shopify-app-review-brief/tools/review-triage-worksheet.html
