@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alfredtech2026.github.io/microsaas-1k/sitemap.xml
+Sitemap: https://alfredtech2026.github.io/shopify-app-review-brief/sitemap.xml
