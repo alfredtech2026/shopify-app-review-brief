@@ -35,6 +35,10 @@ It then creates a copyable Markdown draft with the original source text preserve
 
 The companion **[P0–P3 review-triage guide](https://alfredtech2026.github.io/shopify-app-review-brief/guides/shopify-app-review-triage.html?utm_source=github&utm_medium=repository-readme&utm_campaign=inbound-validation)** explains the escalation rules, weekly workflow, and brief format used by the worksheet and pilot.
 
+## Install the free agent skill
+
+Prefer to run the same workflow inside an AI agent? **[Open or download the harness-neutral `shopify-review-triage` SKILL.md](https://alfredtech2026.github.io/shopify-app-review-brief/skills/shopify-review-triage/?utm_source=github&utm_medium=repository-readme&utm_campaign=inbound-validation)**. It packages the same P0–P3 rubric, source-link discipline, and first-pass-vs-human-checked boundary as plain Markdown—no keys, packages, telemetry, private data, or automated outreach.
+
 ## See human-checked examples
 
 - [Hoppy Apps sample brief](https://alfredtech2026.github.io/shopify-app-review-brief/samples/hoppy-apps.html?utm_source=github&utm_medium=repository-readme&utm_campaign=inbound-validation)
