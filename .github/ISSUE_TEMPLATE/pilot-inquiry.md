@@ -8,6 +8,7 @@ labels: pilot-inquiry
 Team / company:
 Your Shopify apps (3+ active, links):
 Competitors to watch (up to 5, optional):
-Best way to reach you:
+
+GitHub issues are public, so I am not posting contact details here. To continue privately I can email alfred.tech.2026@gmail.com.
 
 I understand this is an opt-in inquiry for the 14-day concierge pilot ($49, charged only after I approve the first useful brief).

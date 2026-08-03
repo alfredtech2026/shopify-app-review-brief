@@ -115,10 +115,11 @@
     <p>Shopify App Review Brief is for independent Shopify app teams managing 3+ active apps. When a new 1–3-star review appears on one of your apps or a named competitor, you get one prioritized, human-checked brief within one business day. The 14-day concierge pilot covers up to 10 owned apps and 5 competitors, with weekday monitoring and one consolidated brief. $49, charged only after you approve the first useful brief.</p>
     <div class="cta-row">
       <a class="button" data-email-cta href="mailto:alfred.tech.2026@gmail.com?subject=Pilot%20inquiry%3A%20Shopify%20App%20Review%20Brief&amp;body=Team%20/%20company%3A%0AYour%20Shopify%20apps%20%283%2B%20active%2C%20links%29%3A%0ACompetitors%20to%20watch%20%28up%20to%205%2C%20optional%29%3A%0A%0AI%20understand%20this%20is%20an%20opt-in%20inquiry%20for%20the%2014-day%20concierge%20pilot%20%28%2449%2C%20charged%20only%20after%20I%20approve%20the%20first%20useful%20brief%29.%0A%0ASource%20page%3A%20sample-helixo%0A">Email a pilot inquiry</a>
-      <a class="button secondary" data-cta href="https://github.com/alfredtech2026/shopify-app-review-brief/issues/new?labels=pilot-inquiry&amp;title=Pilot%20inquiry%3A%20Shopify%20App%20Review%20Brief&amp;body=Team%20/%20company%3A%20%0AYour%20Shopify%20apps%20%283%2B%20active%2C%20links%29%3A%20%0ACompetitors%20to%20watch%20%28up%20to%205%2C%20optional%29%3A%20%0ABest%20way%20to%20reach%20you%3A%20%0A%0AI%20understand%20this%20is%20an%20opt-in%20inquiry%20for%20the%2014-day%20concierge%20pilot%20%28%2449%2C%20charged%20only%20after%20I%20approve%20the%20first%20useful%20brief%29.%0A%0ASource%20page%3A%20sample-helixo%0A">Start a pilot inquiry</a>
       <a class="button secondary" href="../#pilot">Pilot details</a>
     </div>
-    <p class="cta-note">Opt-in only: email opens a prefilled draft you choose to send, and the GitHub issue remains available. We never cold-email or cold-message anyone.</p>
+    <p class="cta-note">Opt-in only: email opens a prefilled draft you choose to send. We never cold-email or cold-message anyone.</p>
+    <p class="contact-direct">No mail app on this device? Write to <a class="inquiry-address" href="mailto:alfred.tech.2026@gmail.com">alfred.tech.2026@gmail.com</a> from wherever you read mail. <button type="button" class="link-button" data-copy-address="alfred.tech.2026@gmail.com" hidden>Copy address</button><span class="copy-status" data-copy-address-status role="status" aria-live="polite"></span></p>
+    <p class="cta-alt">Prefer not to email? <a data-cta href="https://github.com/alfredtech2026/shopify-app-review-brief/issues/new?labels=pilot-inquiry&amp;title=Pilot%20inquiry%3A%20Shopify%20App%20Review%20Brief&amp;body=Team%20/%20company%3A%0AYour%20Shopify%20apps%20%283%2B%20active%2C%20links%29%3A%0ACompetitors%20to%20watch%20%28up%20to%205%2C%20optional%29%3A%0A%0AGitHub%20issues%20are%20public%2C%20so%20I%20am%20not%20posting%20contact%20details%20here.%20To%20continue%20privately%20I%20can%20email%20alfred.tech.2026%40gmail.com.%0A%0AI%20understand%20this%20is%20an%20opt-in%20inquiry%20for%20the%2014-day%20concierge%20pilot%20%28%2449%2C%20charged%20only%20after%20I%20approve%20the%20first%20useful%20brief%29.%0A%0ASource%20page%3A%20sample-helixo%0A">Open a public GitHub issue</a> instead &mdash; it requires a GitHub account, and the issue and every reply are visible to anyone, so leave contact details out of it and we will continue privately by email.</p>
   </main>
 
   <footer class="site">
@@ -134,11 +135,40 @@
         return utm.get(k);
       }).filter(Boolean);
       if (!tags.length) return;
-      document.querySelectorAll("a[data-cta]").forEach(function (a) {
+      document.querySelectorAll("a[data-cta], a[data-email-cta]").forEach(function (a) {
         var u = new URL(a.href);
         u.searchParams.set("body",
           u.searchParams.get("body") + "Channel: " + tags.join(" / ") + "\n");
         a.href = u.toString();
+      });
+    })();
+  </script>
+  <script>
+    // Copy-address fallback: mailto: links do nothing on a device with no mail
+    // client, so every email CTA is backed by the visible address plus this
+    // one-click copy. The button is revealed only when this script runs, so
+    // without JavaScript the address stays there to select by hand.
+    // No cookies, no storage, no network calls.
+    (function () {
+      "use strict";
+      document.querySelectorAll("[data-copy-address]").forEach(function (btn) {
+        var address = btn.getAttribute("data-copy-address");
+        var status = btn.parentNode.querySelector("[data-copy-address-status]");
+        var say = function (msg) { if (status) { status.textContent = msg; } };
+        btn.hidden = false;
+        btn.addEventListener("click", function () {
+          var fail = function () {
+            say("Automatic copy was blocked \u2014 select " + address +
+                " above and copy it by hand.");
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(address).then(function () {
+              say(address + " copied to your clipboard \u2014 nothing was sent anywhere.");
+            }, fail);
+          } else {
+            fail();
+          }
+        });
       });
     })();
   </script>

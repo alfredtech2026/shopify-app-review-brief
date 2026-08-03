@@ -131,6 +131,39 @@ a { color: var(--accent); }
 
 .cta-note { font-size: 0.9rem; color: var(--ink-soft); margin-top: 0.35rem; }
 
+/* Direct-address fallback. mailto: silently does nothing on a device with no
+   mail client configured, so the mailbox itself stays visible, selectable and
+   copyable next to every email CTA. */
+.contact-direct { font-size: 0.95rem; margin: 0.35rem 0; }
+
+.inquiry-address { font-weight: 600; overflow-wrap: anywhere; }
+
+/* Copy control: a text-weight button, so it reads as an aid to the visible
+   address rather than a competing call to action. Hidden until the script
+   runs — without JavaScript the address alone is the fallback. */
+.link-button {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  border-bottom: 1px dashed currentColor;
+  padding: 0;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.link-button:hover { filter: brightness(1.08); }
+
+.link-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.copy-status { font-size: 0.9rem; color: var(--ink-soft); }
+
+.copy-status:not(:empty) { display: block; }
+
+/* The GitHub path is a public thread that needs an account, so it is a plain
+   text link below the primary email CTA — never a button beside it. */
+.cta-alt { font-size: 0.9rem; color: var(--ink-soft); margin-top: 0.35rem; }
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
