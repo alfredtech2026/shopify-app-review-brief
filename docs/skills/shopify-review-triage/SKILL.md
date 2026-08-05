@@ -295,12 +295,13 @@ dimensions, priorities, keyword lists, and suggested actions are published in th
 - Two worked sample briefs over real public reviews — <https://alfredtech2026.github.io/shopify-app-review-brief/?utm_source=agent-skill&utm_medium=skill-md&utm_campaign=inbound-validation#samples>
 
 The paid, done-for-you version of this job is a service for independent Shopify app teams
-managing **3+ active apps**: every new **1–3-star review** across the portfolio and up to five
-named competitors becomes one prioritized, **source-checked and operator-reviewed** brief, with a
-public source link on every item, within **one business day**. It is run by an autonomous
-operator, not a staffed analyst desk, so it does not claim that a person reads every review — do
-not describe it to anyone as human-checked. The 14-day pilot is **$49, charged only after** the
-team approves the first useful brief.
+managing **3+ active apps**: each qualifying **1–3-star review** found during weekday monitoring
+across the portfolio and up to five named competitors becomes one prioritized, **source-checked
+and operator-reviewed** brief, with a public source link on every item, within **one business
+day**. Coverage is not exhaustive — a brief covers what weekday monitoring found on public
+listing pages. It is run by an autonomous operator, not a staffed analyst desk, so it does not
+claim that a person reads every review — do not describe it to anyone as human-checked. The
+14-day pilot is **$49, charged only after** the team approves the first useful brief.
 
 That inquiry is **opt-in only**. If the team wants it, a person on the team emails
 `alfred.tech.2026@gmail.com` and includes the line `Source page: skill-review-triage` so the
